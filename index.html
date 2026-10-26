@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brons Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single left-aligned column, project rows separated by rules, one green accent. */
+:root {
+  --bg: #F1F4F2;
+  --surface: #E6ECE8;
+  --fg: #12201A;
+  --muted: #4F625A;
+  --rule: #C5D0CA;
+  --accent: #0A6B4B;
+  --accent-ink: #FFFFFF;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1713; --surface: #16231D; --fg: #E5EEE9; --muted: #9FB3AA;
+    --rule: #2A3C33; --accent: #4FD1A1; --accent-ink: #08130E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1713; --surface: #16231D; --fg: #E5EEE9; --muted: #9FB3AA;
+  --rule: #2A3C33; --accent: #4FD1A1; --accent-ink: #08130E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--f-body);
+  font-size: 16px; line-height: 1.6;
+  padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+.kicker, .label { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: clamp(2rem, 7vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 1.125rem; color: var(--muted); max-width: 60ch; margin: 0; }
+header { display: flex; flex-direction: column; gap: 20px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-block; background: var(--accent); color: var(--accent-ink);
+  font-weight: 600; text-decoration: none; padding: 10px 16px; border-radius: 6px;
+}
+.btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 8px; }
+.sec-head h2 { font-size: 1.5rem; font-weight: 700; }
+.project { display: flex; flex-direction: column; gap: 14px; padding-block: 28px; border-bottom: 1px solid var(--rule); }
+.project:last-child { border-bottom: 0; }
+.p-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.project h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+.status { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.project p { margin: 0; max-width: 62ch; }
+.project ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 6px; max-width: 62ch; }
+.project li::marker { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.tags li { font-family: var(--f-mono); font-size: 12px; background: var(--surface); padding: 3px 8px; border-radius: 4px; }
+.flow { background: var(--surface); border-radius: 6px; padding: 14px 16px; font-family: var(--f-mono); font-size: 13px; line-height: 1.7; overflow-x: auto; }
+.flow .label { display: block; margin-bottom: 6px; }
+.flow code { white-space: pre; font-family: inherit; }
+.flow b { color: var(--accent); font-weight: 500; }
+.stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px 32px; }
+.stack div { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.stack p { margin: 0; }
+.designs { display: flex; flex-direction: column; gap: 14px; }
+.designs p { margin: 0; max-width: 62ch; }
+.designs strong { font-weight: 600; }
+.about p { margin: 0 0 12px; max-width: 62ch; }
+footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+@media (prefers-reduced-motion: no-preference) { .btn { transition: opacity .15s; } .btn:hover { opacity: .88; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker">Eldoret, Kenya · BSc Project Planning and Management, Moi University</span>
+    <h1>I build <em>payment-first</em> web apps for Kenyan campuses.</h1>
+    <p class="lede">Full-stack developer and project manager. I build in React, TypeScript and Supabase, my apps take real M-Pesa payments, and I have trained AI models on Clickworker. I also run a registered company, BBO Engineering Solutions Limited.</p>
+    <ul class="tags" aria-label="Open to">
+      <li>AI training and data tasks</li><li>Virtual assistant work</li><li>Web and app development</li><li>Project coordination</li><li>Remote, East Africa Time (UTC+3)</li>
+    </ul>
+    <div class="cta">
+      <a class="btn" href="https://eatbonneappetit.co.ke" target="_blank" rel="noopener">See Bonne Appétit live</a>
+      <span class="label">Live product, open to view</span>
+    </div>
+  </header>
+
+  <section aria-labelledby="work">
+    <div class="sec-head"><h2 id="work">Selected work</h2><span class="label">3 projects</span></div>
+
+    <article class="project">
+      <div class="p-top"><h3>Bonne Appétit</h3><span class="status">Live · eatbonneappetit.co.ke</span></div>
+      <p>A food delivery marketplace for students at Moi University Annex and University of Eldoret. It connects three groups: customers, vendors and delivery riders. I am the founder and the developer.</p>
+      <div class="flow" role="img" aria-label="Checkout flow: customer taps Pay, an M-Pesa prompt appears on the phone, the customer enters a PIN, a webhook confirms payment and the order is marked paid.">
+        <span class="label">Checkout flow</span>
+        <code>Tap <b>Pay</b>  →  STK Push prompt on phone  →  M-Pesa PIN
+→  IntaSend webhook hits Supabase  →  order marked <b>paid</b></code>
+      </div>
+      <ul>
+        <li>Replaced manual till-number and cash-on-delivery payment with STK Push checkout through IntaSend.</li>
+        <li>Built Gift a Meal: one student pays by M-Pesa for another, with a check that blocks sending a gift to your own number.</li>
+        <li>Built a weekly meal planner. Picks are upserted into a <code>meal_plan_entries</code> table, and a Postgres function run by pg_cron every 15 minutes asks the customer to confirm or cancel about an hour before dispatch.</li>
+        <li>Wrote Supabase edge functions for cancelling stale orders, releasing escrow and sending trial notifications.</li>
+        <li>Designing menu tiers that list each included component with its quantity, so customers see exactly what they get before adding to cart.</li>
+      </ul>
+      <ul class="tags" aria-label="Stack">
+        <li>React</li><li>TypeScript</li><li>Supabase</li><li>PostgreSQL</li><li>pg_cron</li><li>Edge functions</li><li>IntaSend</li><li>Vercel</li>
+      </ul>
+    </article>
+
+    <article class="project">
+      <div class="p-top"><h3>CampusCrib Finder</h3><span class="status">Working prototype</span></div>
+      <p>A student housing marketplace aimed at housing scams and the slow rental search around campus. The pilot target is Moi University Annex.</p>
+      <ul>
+        <li>Four role dashboards in one app: student, landlord, agent and vendor, with a role switcher.</li>
+        <li>Student side covers filtered listing search, map and nearby tabs, a wallet with simulated M-Pesa top-ups, saved listings, a roommate finder and scam reporting.</li>
+        <li>Monetisation modelled in the UI: KES 50 to unlock a listing and a KES 100 minimum wallet top-up.</li>
+        <li>Global dark and light theme from settings.</li>
+      </ul>
+      <p class="label">Payments are simulated and there is no backend yet.</p>
+      <ul class="tags" aria-label="Stack">
+        <li>React</li><li>JSX</li><li>M-Pesa flow (simulated)</li>
+      </ul>
+    </article>
+
+    <article class="project">
+      <div class="p-top"><h3>Kampas Mall</h3><span class="status">Prototype · paused</span></div>
+      <p>A campus marketplace that combines e-commerce, food, housing and student gigs. The plan includes escrow to reduce scams, a Bronze, Silver and Gold student agent system and AI-assisted listing moderation. The Laravel prototype is on hold while Bonne Appétit proves the food module first.</p>
+      <ul class="tags" aria-label="Stack">
+        <li>Laravel</li><li>Supabase</li><li>PostgreSQL</li><li>M-Pesa STK Push</li>
+      </ul>
+    </article>
+  </section>
+
+  <section aria-labelledby="exp">
+    <div class="sec-head"><h2 id="exp">Experience</h2></div>
+
+    <article class="project">
+      <div class="p-top"><h3>BBO Engineering Solutions Limited</h3><span class="status">Founder and project manager</span></div>
+      <p>A limited company that manages civil works projects for clients. Instead of carrying a permanent payroll, BBO assembles vetted specialist subcontractors for each project, and I am the accountable lead on every job.</p>
+      <ul>
+        <li>Plan scope, schedule and subcontractor roles before work starts, then track progress against milestones.</li>
+        <li>Target client groups include NGOs, churches, SACCOs, diaspora clients and county governments.</li>
+        <li>Designing a client portal on Supabase with milestone tracking, photo updates and resource reports, so clients see progress without calling.</li>
+      </ul>
+    </article>
+
+    <article class="project">
+      <div class="p-top"><h3>AI training contributor</h3><span class="status">Clickworker · RWS TrainAI</span></div>
+      <p>I have trained AI models by completing task-based data work on Clickworker, and I have onboarded with RWS TrainAI. The work rewards following written guidelines exactly, checking your own output and meeting deadlines, which is how I approach every task.</p>
+    </article>
+  </section>
+
+  <section aria-labelledby="services">
+    <div class="sec-head"><h2 id="services">Remote work I take on</h2></div>
+    <div class="stack">
+      <div><span class="label">AI training and data</span><p>Data labelling, response rating and comparison, content review, and writing or reviewing coding tasks in React, TypeScript and SQL.</p></div>
+      <div><span class="label">Virtual assistant</span><p>Calendar and inbox management, task trackers, research, data entry and cleanup, document formatting and meeting notes, with a planner's habit of tracking every deadline.</p></div>
+      <div><span class="label">Web and app development</span><p>React and Supabase apps, M-Pesa and Daraja payment integration, and business websites such as AHERA by KWETU.</p></div>
+      <div><span class="label">Project coordination</span><p>Project plans, schedules, milestone tracking and progress reports for small teams and subcontractors.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="stack">
+    <div class="sec-head"><h2 id="stack">Tools I use</h2></div>
+    <div class="stack">
+      <div><span class="label">Front end</span><p>React, TypeScript, JSX, dark and light theming</p></div>
+      <div><span class="label">Back end and data</span><p>Supabase, PostgreSQL, SQL functions, pg_cron, edge functions, Laravel</p></div>
+      <div><span class="label">Payments and messaging</span><p>Safaricom Daraja (STK Push, C2B, B2C), IntaSend, Africa's Talking SMS</p></div>
+      <div><span class="label">Tooling</span><p>GitHub and Codespaces, Vercel, psql, OpenStreetMap, Lovable for scaffolding</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="designs">
+    <div class="sec-head"><h2 id="designs">Designed, not shipped</h2></div>
+    <div class="designs">
+      <p><strong>TillSync.</strong> A small SaaS that logs M-Pesa till transactions automatically and sends the owner a nightly digest by WhatsApp or SMS.</p>
+      <p><strong>RentTrack.</strong> A PropTech tool for Kenyan landlords with small residential properties. Tenants pay by STK Push straight to the landlord's own till, and caretakers verify by SMS.</p>
+    </div>
+  </section>
+
+  <section class="about" aria-labelledby="about">
+    <div class="sec-head"><h2 id="about">About</h2></div>
+    <p>I am a fourth-year Project Planning and Management student at Moi University in Eldoret. That training shapes how I work: define the scope, set milestones, track progress and report clearly. I build around money flows and handoffs, such as who pays, who confirms, who delivers and what happens when one step fails.</p>
+    <p>I prefer improving something people already do with the right software over inventing something new.</p>
+  </section>
+
+  <footer>Portfolio of Brons · Eldoret, Kenya</footer>
+</div>
+</body>
+</html>
